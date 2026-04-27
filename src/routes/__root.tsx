@@ -25,44 +25,14 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Veya Beauty Salon" },
-      { name: "description", content: "Premium beauty salon in Vijayawada" },
-      { name: "author", content: "Veya Beauty Salon" },
-      { property: "og:title", content: "Veya Beauty Salon" },
-      { property: "og:description", content: "Premium beauty salon in Vijayawada offering hair coloring, keratin, bridal makeup, facials & nail art." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 }
