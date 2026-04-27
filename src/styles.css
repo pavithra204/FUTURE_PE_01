@@ -1,0 +1,313 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-rose-gold: var(--rose-gold);
+  --color-rose-gold-soft: var(--rose-gold-soft);
+  --color-cream: var(--cream);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Veya Beauty — warm plum & soft pink palette */
+  --background: #F5DCE6;
+  --foreground: #3A2A33;
+  --card: #FBEAF1;
+  --card-foreground: #3A2A33;
+  --popover: #FBEAF1;
+  --popover-foreground: #3A2A33;
+  --primary: #7A4E6D;             /* plum — headings & brand */
+  --primary-foreground: #FBEAF1;
+  --secondary: #EFC9D9;            /* slightly deeper than bg for contrast */
+  --secondary-foreground: #7A4E6D;
+  --muted: #EFC9D9;
+  --muted-foreground: #6E5A65;
+  --accent: #E8AFCF;               /* CTA pink */
+  --accent-foreground: #3A2A33;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #FBEAF1;
+  --border: rgba(122, 78, 109, 0.18);
+  --input: #EFC9D9;
+  --ring: #B07AA1;
+  /* Brand swatches */
+  --brand-plum: #7A4E6D;
+  --brand-mauve: #B07AA1;
+  --brand-pink: #E8AFCF;
+  --brand-bg: #F5DCE6;
+  --brand-bg-soft: #FBEAF1;
+  /* Legacy token aliases (used by existing utility classes) */
+  --rose-gold: #B07AA1;
+  --rose-gold-soft: #E8AFCF;
+  --cream: #FBEAF1;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ===== Veya animations ===== */
+@keyframes veya-fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes veya-hero-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes veya-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes veya-breathe {
+  0%, 100% { transform: scale(1) translate(0,0); opacity: 0.55; }
+  50% { transform: scale(1.15) translate(2%, -2%); opacity: 0.85; }
+}
+@keyframes veya-orb-rise {
+  0% { transform: translateY(20vh) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-110vh) translateX(40px) scale(1.1); opacity: 0; }
+}
+@keyframes veya-particle {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+@keyframes veya-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--rose-gold) 55%, transparent), 0 10px 30px -10px color-mix(in oklab, var(--rose-gold) 40%, transparent); }
+  50% { box-shadow: 0 0 0 18px color-mix(in oklab, var(--rose-gold) 0%, transparent), 0 18px 50px -10px color-mix(in oklab, var(--rose-gold) 60%, transparent); }
+}
+@keyframes veya-phone-pulse {
+  0%, 100% { opacity: 1; text-shadow: 0 0 0 transparent; }
+  50% { opacity: 0.85; text-shadow: 0 0 24px color-mix(in oklab, var(--rose-gold) 70%, transparent); }
+}
+@keyframes veya-star-shimmer {
+  0%, 100% { opacity: 0.45; filter: drop-shadow(0 0 0 transparent); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px color-mix(in oklab, var(--rose-gold) 80%, transparent)); }
+}
+@keyframes veya-ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+.veya-reveal { opacity: 0; }
+.veya-reveal.is-visible { animation: veya-fade-up 0.7s ease-out forwards; }
+
+.veya-float-card {
+  animation: veya-float 3s ease-in-out infinite;
+  will-change: transform;
+}
+.veya-tilt-inner {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.veya-tilt-inner:hover {
+  box-shadow: 0 30px 60px -20px color-mix(in oklab, var(--rose-gold) 35%, transparent),
+              0 0 0 1px color-mix(in oklab, var(--rose-gold) 50%, transparent),
+              0 0 40px color-mix(in oklab, var(--rose-gold) 25%, transparent);
+}
+
+.veya-hero-bg {
+  background: radial-gradient(ellipse at 30% 30%, color-mix(in oklab, var(--brand-mauve) 28%, transparent), transparent 60%),
+              radial-gradient(ellipse at 70% 70%, color-mix(in oklab, var(--brand-plum) 22%, transparent), transparent 55%),
+              radial-gradient(ellipse at 50% 100%, color-mix(in oklab, var(--brand-pink) 30%, transparent), transparent 70%);
+  animation: veya-breathe 9s ease-in-out infinite;
+  filter: blur(40px);
+}
+
+.veya-orb {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--brand-mauve) 40%, transparent), transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+  animation: veya-orb-rise linear infinite;
+}
+.veya-particle {
+  position: fixed;
+  width: 4px; height: 4px;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--brand-plum) 50%, white);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: veya-particle linear infinite;
+  z-index: 1;
+}
+
+.veya-cta {
+  animation: veya-pulse-glow 2s ease-in-out infinite;
+  transition: transform 0.25s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+.veya-cta:hover { transform: scale(1.06); }
+.veya-cta:hover { background: var(--brand-mauve) !important; color: var(--brand-bg-soft) !important; }
+.veya-ripple {
+  position: absolute;
+  border-radius: 9999px;
+  background: color-mix(in oklab, white 60%, transparent);
+  transform: scale(0);
+  animation: veya-ripple 0.7s linear;
+  pointer-events: none;
+}
+
+.veya-phone { animation: veya-phone-pulse 3s ease-in-out infinite; }
+
+.veya-star { animation: veya-star-shimmer 1.4s ease-in-out infinite; color: var(--rose-gold); }
+
+.veya-nav-link {
+  position: relative;
+  padding: 0.25rem 0;
+}
+.veya-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 1.5px;
+  background: var(--rose-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+.veya-nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.veya-gradient-text {
+  background: linear-gradient(135deg, var(--brand-plum) 0%, var(--brand-mauve) 60%, var(--brand-pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.veya-hero-in { animation: veya-hero-in 0.6s ease-out 0.1s both; }
+.veya-hero-in-2 { animation: veya-hero-in 0.6s ease-out 0.35s both; }
+.veya-hero-in-3 { animation: veya-hero-in 0.6s ease-out 0.6s both; }
+
+@media (max-width: 768px) {
+  .veya-float-card { animation-duration: 5s; }
+  .veya-tilt-disabled { transform: none !important; }
+}
